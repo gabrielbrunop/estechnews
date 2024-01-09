@@ -231,7 +231,6 @@ export default function Editor({ initialContent, onUpdate }: Props) {
             class: "px-8 pt-1 pb-4 prose prose-slate max-w-none antialised prose-h1:text-3xl prose-h1:font-medium prose-a:text-blue-600 break-words outline-none"
           }
         }}
-        children={undefined}
       >
       </EditorProvider>
     </div>
