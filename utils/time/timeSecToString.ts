@@ -1,13 +1,13 @@
 type Time = { baseTime: number, singularName: string, pluralName: string };
 
-const times: Time[] = [
+const times = [
   { baseTime: 946080000, singularName: "ano", pluralName: "anos" },
   { baseTime: 2592000, singularName: "mês", pluralName: "meses" },
   { baseTime: 86400, singularName: "dia", pluralName: "dias" },
   { baseTime: 3600, singularName: "hora", pluralName: "horas" },
   { baseTime: 60, singularName: "minuto", pluralName: "minutos" },
   { baseTime: 0, singularName: "segundo", pluralName: "segundos" }
-] as const;
+];
 
 function getTimeStr(timeObject: Time, timeSec: number) {
   const measureStr = timeSec >= timeObject.baseTime * 2 ?
