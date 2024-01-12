@@ -1,5 +1,5 @@
 import ButtonList from "@/app/_components/feed/ButtonList"
-import PaginationButtons from '@/app/_components/navigation/PaginationButtons'
+import Pagination from '@/app/_components/navigation/Pagination'
 import LoadingPostList from '@/app/_components/loading/LoadingPostList'
 
 export default async function Loading() {
@@ -8,8 +8,9 @@ export default async function Loading() {
   return (
     <div className="w-full flex flex-col gap-10">
       <ButtonList selectedPostOption={null} />
-      <LoadingPostList quantity={quantity} />
-      <PaginationButtons hasBefore={false} hasNext={false} thisPage={1} />
+      <Pagination hasBefore={false} hasNext={false} thisPage={1}>
+        <LoadingPostList quantity={quantity} />
+      </Pagination>
     </div>
   )
 }

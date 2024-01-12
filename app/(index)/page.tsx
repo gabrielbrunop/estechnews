@@ -1,7 +1,7 @@
 import { createClient } from '@/utils/auth/server'
 import { cookies } from 'next/headers'
 import ButtonList from "@/app/_components/feed/ButtonList"
-import PaginationButtons from '@/app/_components/navigation/PaginationButtons'
+import Pagination from '@/app/_components/navigation/Pagination'
 import PostList from '@/app/_components/feed/PostList'
 import getQueryPage from '@/utils/query/getQueryPage'
 import getQueryOrder from '@/utils/query/getQueryOrder'
@@ -39,9 +39,10 @@ export default async function Index({ searchParams }: Props) {
     <div className="w-full flex flex-col gap-10">
       <div className="flex flex-col gap-6">
         <ButtonList selectedPostOption={orderBy} />
-        <PostList posts={posts?.slice(0, rangeStep)} />
+        <Pagination hasBefore={startRange > 0} hasNext={postsLength > rangeStep} thisPage={page} query={searchParams}>
+          <PostList posts={posts?.slice(0, rangeStep)} />
+        </Pagination>
       </div>
-      <PaginationButtons hasBefore={startRange > 0} hasNext={postsLength > rangeStep} thisPage={page} query={searchParams} />
     </div>
   )
 }

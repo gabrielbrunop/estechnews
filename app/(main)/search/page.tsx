@@ -1,6 +1,6 @@
 import { createClient } from '@/utils/auth/server'
 import { cookies } from 'next/headers'
-import PaginationButtons from '@/app/_components/navigation/PaginationButtons'
+import Pagination from '@/app/_components/navigation/Pagination'
 import PostList from '@/app/_components/feed/PostList'
 import SearchBar from '@/app/_components/search/SearchBar'
 import getQueryOrder from '@/utils/query/getQueryOrder'
@@ -53,8 +53,9 @@ export default async function Index({ searchParams }: Props) {
       <h1 className="text-3xl pt-5 sm:pt-0 sm:text-4xl font-bold">Pesquise por conteúdo</h1>
       <SearchBar className="w-full sm:w-96" />
       { query && <p className="-mt-1 -mb-4 text-gray-700">Pesquisando por {query}</p> }
-      <PostList className="w-full" notFoundClassName="text-center py-4 text-gray-500" posts={posts?.slice(0, rangeStep)} />
-      <PaginationButtons hasBefore={startRange > 0} hasNext={postsLength > rangeStep} thisPage={page} query={searchParams} />
+      <Pagination hasBefore={startRange > 0} hasNext={postsLength > rangeStep} thisPage={page} query={searchParams}>
+        <PostList className="w-full" notFoundClassName="text-center py-4 text-gray-500" posts={posts?.slice(0, rangeStep)} />
+      </Pagination>
     </div>
   )
 }

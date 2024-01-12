@@ -1,5 +1,5 @@
 import DateText from '@/app/_components/general/DateText';
-import PaginationButtons from '@/app/_components/navigation/PaginationButtons';
+import Pagination from '@/app/_components/navigation/Pagination';
 import SignOutButton from '@/app/_components/auth/SignOutButton';
 import { createClient } from '@/utils/auth/server'
 import getQueryPage from '@/utils/query/getQueryPage';
@@ -181,25 +181,26 @@ export default async function Page({ params, searchParams }: Props) {
         }
       </div>
       <p className="text-gray-500">Membro desde <DateText date={creationTime} /></p>
-      <ul className="flex flex-col gap-2 py-6">
-        {
-          activities.length > 0 ?
-            activities.map(c =>
-              <ProfileActivity
-                key={c.type + "#" + c.value.id}
-                createdAt={c.value.created_at}
-                username={profile.username}
-                postName={c.type === ActivityType.Comment ? unwrap(c.value.post)?.title : c.value.title}
-                content={c.type === ActivityType.Comment ? stripHtml(c.value.content).result : undefined}
-                route={c.type === ActivityType.Comment ? getCommentRoute(c.value) : getPostRoute(c.value)}
-                action={c.type === ActivityType.Comment ? "comentou em" : "publicou"}
-                actionNotFound={c.type === ActivityType.Comment ? "comentou em um post removido" : "publicou um post removido"}
-              />
-            ) :
-            <p>Nenhuma atividade encontrada.</p>
-        }
-      </ul>
-      <PaginationButtons hasBefore={startRange > 0} hasNext={activities.length > rangeStep} thisPage={page} query={searchParams} />
+      <Pagination hasBefore={startRange > 0} hasNext={activities.length > rangeStep} thisPage={page} query={searchParams}>
+        <ul className="flex flex-col gap-2 py-6">
+          {
+            activities.length > 0 ?
+              activities.map(c =>
+                <ProfileActivity
+                  key={c.type + "#" + c.value.id}
+                  createdAt={c.value.created_at}
+                  username={profile.username}
+                  postName={c.type === ActivityType.Comment ? unwrap(c.value.post)?.title : c.value.title}
+                  content={c.type === ActivityType.Comment ? stripHtml(c.value.content).result : undefined}
+                  route={c.type === ActivityType.Comment ? getCommentRoute(c.value) : getPostRoute(c.value)}
+                  action={c.type === ActivityType.Comment ? "comentou em" : "publicou"}
+                  actionNotFound={c.type === ActivityType.Comment ? "comentou em um post removido" : "publicou um post removido"}
+                />
+              ) :
+              <p>Nenhuma atividade encontrada.</p>
+          }
+        </ul>
+      </Pagination>
     </div>
   )
 }
