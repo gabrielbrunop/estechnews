@@ -13,6 +13,7 @@ import { notFound } from 'next/navigation';
 import { stripHtml } from 'string-strip-html';
 import { Metadata } from 'next';
 import configs from "@/app/configs.json"
+import SettingsButton from '@/app/_components/user/SettingsButton';
 
 enum ActivityType {
   Comment,
@@ -171,7 +172,13 @@ export default async function Page({ params, searchParams }: Props) {
     <div className="flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <h1 className="text-4xl font-bold">{profile.username}</h1>
-        {isOwnProfile && <SignOutButton />}
+        {
+          isOwnProfile &&
+          <div className="flex flex-row gap-2">
+            <SettingsButton />
+            <SignOutButton />
+          </div>
+        }
       </div>
       <p className="text-gray-500">Membro desde <DateText date={creationTime} /></p>
       <ul className="flex flex-col gap-2 py-6">
