@@ -1,5 +1,4 @@
 import NavBar from '@/app/_components/navigation/NavBar'
-import Footer from '@/app/_components/navigation/Footer'
 import Main from '@/app/_components/general/Main'
 import TopLoader from '@/app/_components/navigation/TopLoader'
 
@@ -13,7 +12,6 @@ export default function Layout({ children }: Props) {
       <Main>
         {children}
       </Main>
-      <Footer />
     </>
   )
 }

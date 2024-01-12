@@ -2,7 +2,7 @@ import { createClient } from '@/utils/auth/server'
 import { cookies } from 'next/headers'
 import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
-import ChangeUsernameForm from '../_components/post/ChangeUsernameForm'
+import ChangeUsernameForm from '@/app/_components/post/ChangeUsernameForm'
 
 export const metadata: Metadata = {
   title: `Configurações`
