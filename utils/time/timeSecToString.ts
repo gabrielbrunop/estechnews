@@ -6,10 +6,12 @@ const times = [
   { baseTime: 86400, singularName: "dia", pluralName: "dias" },
   { baseTime: 3600, singularName: "hora", pluralName: "horas" },
   { baseTime: 60, singularName: "minuto", pluralName: "minutos" },
-  { baseTime: 0, singularName: "segundo", pluralName: "segundos" }
+  { baseTime: 1, singularName: "segundo", pluralName: "segundos" }
 ];
 
 function getTimeStr(timeObject: Time, timeSec: number) {
+  if (timeSec <= 1) return "agora pouco";
+
   const measureStr = timeSec >= timeObject.baseTime * 2 ?
     timeObject.pluralName :
     timeObject.singularName;
