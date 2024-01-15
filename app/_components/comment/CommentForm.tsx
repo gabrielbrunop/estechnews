@@ -6,7 +6,7 @@ import LoadingMarkdownEditor from "@/app/_components/loading/LoadingCommentEdito
 import { useFormState } from "react-dom"
 import createComment from "../../_actions/createComment"
 
-const Editor = dynamic(() => import ("@/app/_components/editors/CommentEditor"), { ssr: false, loading: LoadingMarkdownEditor });
+const Editor = dynamic(() => import ("@/app/_components/editors/Editor"), { ssr: false, loading: LoadingMarkdownEditor });
 
 type Props = {
   postId: string
@@ -27,7 +27,14 @@ export default function CommentForm({ postId }: Props) {
 
       formAction(formData);
     }} className="w-full flex flex-col gap-2">
-      <Editor initialContent={text} onUpdate={setText} />
+      <Editor
+        initialContent={text}
+        onUpdate={setText}
+        extensions={["links", "youtube"]}
+        menu={["bold", "italic", "strike", "code", "codeBlock", "clear", "bulletList", "orderedList", "blockquote", "link"]}
+        className="min-h-[6em] py-6 max-h-[20vh]"
+        small
+      />
       {
         state?.messages && state.messages.length > 0 && (
           <div className="rounded border-2 mt-2 py-2 border-red-200 bg-red-100">

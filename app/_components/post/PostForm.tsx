@@ -7,7 +7,7 @@ import LoadingMarkdownEditor from "@/app/_components/loading/LoadingPostEditor"
 import { useFormState } from "react-dom"
 import createPost from "@/app/_actions/createPost"
 
-const Editor = dynamic(() => import ("@/app/_components/editors/PostEditor"), { ssr: false, loading: LoadingMarkdownEditor });
+const Editor = dynamic(() => import ("@/app/_components/editors/Editor"), { ssr: false, loading: LoadingMarkdownEditor });
 
 export default function PostForm() {
   const router = useRouter();
@@ -22,7 +22,13 @@ export default function PostForm() {
       formAction(formData);
     }} className="w-full flex flex-col gap-5">
       <input className="w-full rounded-md px-4 py-2 border-gray-400 border focus:outline-none" name="title" placeholder="Título" value={title} onChange={e => setTitle(e.target.value)} required />
-      <Editor initialContent={text} onUpdate={setText} />
+      <Editor
+        initialContent={text}
+        onUpdate={setText}
+        extensions={["links", "youtube"]}
+        menu={["paragraphs", "bold", "italic", "strike", "code", "bulletList", "orderedList", "link", "youtube",
+          "codeBlock", "blockquote", "hr", "undo", "redo", "clear"]}
+      />
       {
         state.messages && state.messages.length > 0 && (
           <div className="rounded border-2 mt-2 py-2 border-red-200 bg-red-100">
