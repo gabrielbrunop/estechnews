@@ -90,9 +90,9 @@ export default async function Page({ searchParams, params }: Props) {
       <section className="w-full flex flex-col py-4 gap-3" >
         <ParsedHtmlText content={post.content} />
       </section>
-      <section className="w-full flex flex-row">
+      <section className="flex flex-row gap-5">
         <LikeButton postId={post.id} likes={post.post_likes.length} userLiked={userLikedPost} />
-        <span className="flex flex-row items-center gap-2 text-gray-500 font-medium gray-200 rounded py-1 px-3">
+        <span className="flex flex-row items-center gap-2 text-gray-500 font-medium gray-200 rounded">
           <FaCommentAlt />
           {post.comments?.length ?? 0} comentários
         </span>

@@ -33,7 +33,7 @@ export default function LikeButton({ likes, userLiked, postId }: Props) {
   }
 
   return (
-    <button onClick={handleClick} className="flex flex-row items-center gap-2 outline-none text-indigo-500 font-medium gray-200 rounded py-1 px-3">
+    <button onClick={handleClick} className="flex flex-row items-center gap-2 outline-none text-indigo-500 font-medium gray-200 rounded">
       {liked ? <AiFillHeart /> : <AiOutlineHeart />}
       {numberOfLikes} curtida{numberOfLikes !== 1 ? "s" : ""}
     </button>
