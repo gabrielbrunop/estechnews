@@ -11,8 +11,8 @@ type Props = React.PropsWithChildren<{}>
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="pt">
-      <body className="bg-background text-foreground min-h-[100vh]">
-        <div className="flex flex-col h-screen gap-8">
+      <body className="bg-background text-foreground min-h-[100dvh]">
+        <div className="flex flex-col min-h-[100dvh] gap-8">
           <div className="flex-1 w-full flex flex-col gap-8 sm:gap-12 items-center">
             {children}
           </div>
