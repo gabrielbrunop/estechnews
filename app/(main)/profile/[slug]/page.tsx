@@ -53,7 +53,7 @@ function ActivityHeader({ children }: React.PropsWithChildren) {
 
 function ActivityContent({ children }: React.PropsWithChildren) {
   return (
-    <p className="text-gray-600">
+    <p className="text-gray-600 text-sm sm:text-base">
       {children}
     </p>
   )
