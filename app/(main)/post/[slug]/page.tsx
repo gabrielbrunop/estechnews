@@ -77,7 +77,7 @@ export default async function Page({ searchParams, params }: Props) {
   const userLikedPost = user && post.post_likes.find((s: { author: { id: string } }) => s.author.id === user.id);
 
   return (
-    <article className="w-full flex flex-col gap-3 py-4">
+    <article className="w-full flex flex-col gap-3 pt-4 pb-3">
       <h1 className="text-4xl font-extrabold break-words">{post.title}</h1>
       <header className="w-full flex flex-col gap-4">
         <div className="flex text-sm sm:text-base gap-2 text-gray-500 whitespace-nowrap flex-wrap">
@@ -97,7 +97,7 @@ export default async function Page({ searchParams, params }: Props) {
           {post.comments?.length ?? 0} comentários
         </span>
       </section>
-      <section className="flex flex-col pt-8 gap-8">
+      <section className={`flex flex-col pt-8 gap-8 ${!user || comments.length > 0 ? "pb-8" : ""}`}>
         <hr />
         <CommentSection showCommentBox={!!user} comments={comments} postId={post.id} highlightedCommentId={highlightedCommentId} />
       </section>
