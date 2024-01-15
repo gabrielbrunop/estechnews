@@ -11,8 +11,12 @@ const defaultError = { result: "error", messages: [defaultErrorMessage] };
 const sanitization: sanitizeHtml.IOptions = {
   allowedTags: [
     "div", "p", "h1", "h2", "h3", "strong", "em", "u", "s", "blockquote",
-    "ol", "li", "ul", "pre", "sub", "sup", "span"
+    "ol", "li", "ul", "pre", "sub", "sup", "span", "a"
   ],
+  allowedAttributes: {
+    a: ["href", "rel", "target"],
+  },
+  allowedSchemes: ['http', 'https'],
   allowedClasses: {}
 };
 
